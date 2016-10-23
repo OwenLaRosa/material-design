@@ -13,7 +13,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:layout_margin="@dimen/cardview_content_margin">
 
         <!--suppress AndroidLintContentDescription -->
         <com.android.volley.toolbox.NetworkImageView
@@ -22,7 +23,7 @@
             android:layout_height="wrap_content"
             android:scaleType="centerCrop"
             android:adjustViewBounds="true"
-            android:background="@android:color/holo_green_dark" />
+            android:background="@color/photo_placeholder" />
 
         <TextView
             android:id="@+id/article_title"
