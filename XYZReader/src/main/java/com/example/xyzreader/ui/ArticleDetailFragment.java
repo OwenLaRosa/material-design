@@ -7,18 +7,19 @@ import android.content.Loader;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.Color;
-import android.graphics.Rect;
+import android.graphics.Point;
 import android.graphics.Typeface;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v4.app.ShareCompat;
 import android.support.v7.graphics.Palette;
-import android.support.v7.widget.Toolbar;
 import android.text.Html;
 import android.text.format.DateUtils;
 import android.text.method.LinkMovementMethod;
 import android.util.Log;
+import android.view.Display;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -131,6 +132,17 @@ public class ArticleDetailFragment extends Fragment implements
                         .getIntent(), getString(R.string.action_share)));
             }
         });
+
+        // get screen height, referenced from: http://stackoverflow.com/questions/17481341/how-to-get-android-screen-size-programmatically-once-and-for-all
+        Display display = getActivity().getWindowManager().getDefaultDisplay();
+        Point size = new Point();
+        display.getSize(size);
+        int height = size.y;
+
+        // get a reference to the appbar layout
+        AppBarLayout appBarLayout = (AppBarLayout) mRootView.findViewById(R.id.appbar_layout);
+        // size should be 2/5 of total screen height
+        appBarLayout.getLayoutParams().height = (height / 5) * 2;
 
         bindViews();
         updateStatusBar();
