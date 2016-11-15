@@ -37,13 +37,6 @@
                 android:layout_height="match_parent"
                 android:background="@drawable/scrim"/>
 
-            <android.support.v7.widget.Toolbar
-                android:id="@+id/toolbar"
-                android:layout_width="match_parent"
-                android:layout_height="?attr/actionBarSize"
-                app:layout_collapseMode="pin"
-                app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
-
         </android.support.design.widget.CollapsingToolbarLayout>
 
     </FrameLayout>
@@ -52,17 +45,18 @@
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:layout_gravity="center_horizontal"
-        android:background="#fff"
+        android:background="#0000"
         android:elevation="4dp"
-        android:layout_marginLeft="180dp"
-        android:layout_marginRight="180dp"
-        android:layout_marginTop="96dp"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:background="#fff"
+            android:layout_marginLeft="180dp"
+            android:layout_marginRight="180dp"
+            android:layout_marginTop="96dp">
 
             <TextView
                 android:id="@+id/article_title"
@@ -100,30 +94,13 @@
 
     </android.support.v4.widget.NestedScrollView>
 
-    <!-- <com.example.xyzreader.ui.MaxWidthLinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_gravity="center_horizontal"
-        android:background="#fff"
-        android:elevation="2dp"
-        android:maxWidth="@dimen/detail_card_max_width"
-        android:orientation="vertical"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior">
-
-        <TextView
-            android:id="@+id/article_body"
-            style="?android:attr/textAppearanceMedium"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/detail_inner_horiz_margin"
-            android:layout_marginRight="@dimen/detail_inner_horiz_margin"
-            android:lineSpacingMultiplier="@fraction/detail_body_line_spacing_multiplier"
-            android:paddingBottom="@dimen/detail_body_bottom_margin"
-            android:textColor="@color/ltgray"
-            android:textColorLink="@color/theme_accent"
-            android:textSize="@dimen/detail_body_text_size" />
-
-    </com.example.xyzreader.ui.MaxWidthLinearLayout> -->
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="?attr/actionBarSize"
+        android:layout_height="?attr/actionBarSize"
+        android:elevation="5dp"
+        app:layout_collapseMode="pin"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/share_fab"
