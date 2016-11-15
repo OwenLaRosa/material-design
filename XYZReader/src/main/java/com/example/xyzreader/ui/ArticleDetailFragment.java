@@ -153,7 +153,7 @@ public class ArticleDetailFragment extends Fragment implements
         int height = size.y;
 
         // get a reference to the appbar layout
-        AppBarLayout appBarLayout = (AppBarLayout) mRootView.findViewById(R.id.appbar_layout);
+        View appBarLayout =  mRootView.findViewById(R.id.appbar_layout);
         // size should be 2/5 of total screen height
         appBarLayout.getLayoutParams().height = (height / 5) * 2;
 
@@ -205,15 +205,17 @@ public class ArticleDetailFragment extends Fragment implements
             mRootView.setAlpha(0);
             mRootView.setVisibility(View.VISIBLE);
             mRootView.animate().alpha(1);
-            mToolbar.setTitle(mCursor.getString(ArticleLoader.Query.TITLE));
             TextView articleTitle = (TextView) mRootView.findViewById(R.id.article_title);
             if (articleTitle != null) {
+                // force title to be blank, empty string sets to app name instead
+                mToolbar.setTitle(" ");
                 articleTitle.setText(mCursor.getString(ArticleLoader.Query.TITLE));
                 bylineView.setText(DateUtils.getRelativeTimeSpanString(
                         mCursor.getLong(ArticleLoader.Query.PUBLISHED_DATE),
                         System.currentTimeMillis(), DateUtils.HOUR_IN_MILLIS,
                         DateUtils.FORMAT_ABBREV_ALL).toString() + " by " + mCursor.getString(ArticleLoader.Query.AUTHOR));
             } else {
+                mToolbar.setTitle(mCursor.getString(ArticleLoader.Query.TITLE));
                 bylineView.setText(Html.fromHtml(
                         DateUtils.getRelativeTimeSpanString(
                                 mCursor.getLong(ArticleLoader.Query.PUBLISHED_DATE),
